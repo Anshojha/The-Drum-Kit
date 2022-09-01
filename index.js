@@ -10,6 +10,7 @@ for (var i = 0; i < numberOfButtons; i++) {
         var buttonInnerHtml = this.innerHTML;
 
        makesound(buttonInnerHtml);
+       buttonAnimation(buttonInnerHtml);
 
     });
 }
@@ -18,6 +19,7 @@ for (var i = 0; i < numberOfButtons; i++) {
 // This part of the code detect keypress
 document.addEventListener("keypress",function(event){
     makesound(event.key);
+    buttonAnimation(event.key);
 })
 
 
@@ -55,4 +57,14 @@ function makesound(key){
             break;
     }
 
+}
+
+
+function buttonAnimation(currentKey){
+   var activeButton= document.querySelector("."+currentKey);
+   activeButton.classList.add("pressed");
+
+   setTimeout(function(){
+    activeButton.classList.remove("pressed");
+   },100);
 }
